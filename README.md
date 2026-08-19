@@ -6,8 +6,6 @@ Codeforces, LeetCode, CSES, CodeChef &amp; GeeksforGeeks solutions, organized cl
 <!-- cf-sync -->
 # Competitive Programming Solutions
 
-Synced automatically by SolveBase.
-
 **Total solved: 2**
 
 ## Codeforces
