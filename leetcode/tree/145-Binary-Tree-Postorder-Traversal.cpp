@@ -14,21 +14,34 @@ public:
 
     // Left -> Right -> Root ;
 
-    vector<int> ans ;
+    vector<int> postorderTraversal(TreeNode* root) {
+        stack<TreeNode*> st_node;
+        stack<int> st_order;
+        vector<int>ans;
 
-    void recurse(TreeNode* node){
-        if(node == NULL){
-            return;
+        if(root == NULL){
+            return ans;
+        }
+        st_node.push(root);
+
+        while(!st_node.empty()){
+            TreeNode* node = st_node.top();
+            st_order.push(node->val);
+
+            st_node.pop();
+            if(node->left!=NULL){
+                st_node.push(node->left);
+            }
+            if(node->right!=NULL){
+                st_node.push(node->right);
+            }
         }
 
-        recurse(node->left);
-        recurse(node->right);
-        ans.push_back(node->val);
-    }
+        while(!st_order.empty()){
+            ans.push_back(st_order.top());
+            st_order.pop();
+        }
 
-
-    vector<int> postorderTraversal(TreeNode* root) {
-        recurse(root);
         return ans;
     }
 };
