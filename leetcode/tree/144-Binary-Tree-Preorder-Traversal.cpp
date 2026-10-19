@@ -14,22 +14,31 @@ public:
 
     // Root -> Left -> Right 
 
-    vector<int> ans ;
+   
+    vector<int> preorderTraversal(TreeNode* root) {
+        stack <TreeNode*> st ;
+        vector<int>ans;
 
-    void recurse(TreeNode* node){
-        if(node == NULL){
-            return;
+        if(root == NULL){
+            return ans;
         }
 
-        ans.push_back(node -> val);
+        st.push(root);
 
-        recurse(node->left);
-        recurse(node->right);
-    }
+        while(!st.empty()){
+            TreeNode* node = st.top();
+            ans.push_back(node->val);
+            st.pop();
 
+            if(node->right!=NULL){
+                st.push(node->right);
+            }
+            if(node->left!=NULL){
+                st.push(node->left);
+            }
+        }
 
-    vector<int> preorderTraversal(TreeNode* root) {
-        recurse(root);
         return ans ;
+
     }
 };
