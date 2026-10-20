@@ -14,22 +14,26 @@ public:
 
     // Left -> Root -> Right
 
-    vector<int> ans ;
-
-    void recurse(TreeNode* node){
-        if(node == NULL){
-            return;
-        }
-
-        recurse(node->left);
-
-        ans.push_back(node->val);
-
-        recurse(node -> right);
-    }
-
     vector<int> inorderTraversal(TreeNode* root) {
-        recurse(root);
-        return ans;
+        stack <TreeNode*> st ;
+        vector<int>ans;
+        TreeNode* node = root ;
+        while(true){
+            if(node != NULL){
+                st.push(node);
+                node = node->left;
+            }
+            else{
+                if(st.empty()){
+                    break;
+                }
+
+                node = st.top();
+                st.pop();
+                ans.push_back(node->val);
+                node = node->right;
+            }
+        }
+        return ans ;
     }
 };
