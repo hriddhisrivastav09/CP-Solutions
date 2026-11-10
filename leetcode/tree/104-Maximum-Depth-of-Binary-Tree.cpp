@@ -12,7 +12,6 @@
 class Solution {
 public:
 
-    int depth = 0 ;
     int maxDepth(TreeNode* root) {
         if(!root){
             return 0 ;
